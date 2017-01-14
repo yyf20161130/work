@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+<title>提现明细列表</title>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" type="image/x-icon"
+	href="./img/WechatIMG13.png" />
+<link rel="stylesheet"
+	href="http://static.apptest.0085.com/bootstrap/css/matrix-style.css?20160808-2">
+<link rel="stylesheet" type="text/css"
+	href="http://static.apptest.0085.com/bootstrap/css/matrix-media.css?20160808-2" />
+<link rel="stylesheet" type="text/css"
+	href="http://static.apptest.0085.com/bootstrap-v232/css/bootstrap.min.css?20160808-2" />
+<link rel="stylesheet" type="text/css"
+	href="http://static.apptest.0085.com/bootstrap/font-awesome/css/font-awesome.css?20160808-2" />
+<link rel="stylesheet" type="text/css"
+	href="http://static.apptest.0085.com/lib/bootstrap-notify/css/bootstrap-notify.css?20160808-2" />
+<link rel="stylesheet" type="text/css"
+	href="http://static.apptest.0085.com/css/app.css?20160808-2" />
+<link rel="stylesheet" type="text/css" href="./ui/layui/css/layui.css" />
+<script type="text/javascript"
+	src="http://static.apptest.0085.com/js/index.js?20160808-2"></script>
+<link rel="stylesheet" type="text/css"
+	href="http://static.apptest.0085.com/lib/bootstrap-table/bootstrap-table.css?20160808-2" />
+<link rel="stylesheet" type="text/css"
+	href="http://static.apptest.0085.com/lib/bootstrap-datepicker-1.5/css/bootstrap-datepicker.css?20160808-2" />
+<link rel="stylesheet" type="text/css"
+	href="http://static.apptest.0085.com/lib/bootstrap-editable/css/bootstrap-editable.css?20160808-2" />
+</head>
+
+<body id="iframe-body">
+	<div class="content-t">
+		<div class="breadcrumb clearfix"></div>
+		<div class="container-fluid">
+			<div class='notifications top-right'></div>
+			<div class='notifications top-center'></div>
+<span style=" text-align:center;">
+					    <h1  style="font-weight:normal;font-size:35px">提现明细列表</h1>
+					</span>
+			<div class="row-fluid">
+				<div class="alert alert-warning row-fluid">
+			
+					<span class="span1">提现总金额：
+						<h3 id = "sum"></h3>
+					</span>
+			</div>
+				<div class="row-fluid">
+					<form id="searchForm" action="">
+						<div class="pull-left form-group" style="margin-right: 10px">
+						<span class="input-group-addon">申请开始时间：</span>
+							<div class="layui-input-inline">
+								<input class="layui-input" style="width: 160px; height: 30px"
+									placeholder="申请开始时间" name="submitStartTime" id = "submitStartTime"
+									onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+							</div>
+							<span class="input-group-addon">申请结束时间：</span>
+							<div class="layui-input-inline">
+								<input class="layui-input" style="width: 160px; height: 30px"
+									placeholder="申请结束时间" name="submitEndTime" id="submitEndTime"
+									onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+							</div>
+							<span class="input-group-addon">完成开始时间：</span>
+							<div class="layui-input-inline">
+								<input class="layui-input" style="width: 160px; height: 30px"
+									placeholder="完成开始时间" name="completeStartTime" id = "completeStartTime"
+									onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+							</div>
+							<span class="input-group-addon">完成结束时间：</span>
+							<div class="layui-input-inline">
+								<input class="layui-input" style="width: 160px; height: 30px"
+									placeholder="完成结束时间" name="completeEndTime" id="completeEndTime"
+									onclick="layui.laydate({elem: this, istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+							</div>
+						</div>
+					
+							<div style="float:right"> 
+						<span class="input-group-addon">用户类型:</span>
+						<select id = "userType" name="userType" style="width: 100px; height: 30px">
+						      <option value = "merchant">商家</option>
+						      <option value = "agent">合作商</option>
+						</select>
+						<span class="input-group-addon">状态：</span>
+						<select id ="state" name = "state" style="width: 100px; height: 30px">
+						      <option value="apply" >申请中</option>
+						      <option value ="done">已完成</option>
+						      <option value ="cancel">已取消</option>
+						      
+						</select>
+						
+															
+						<button id="btn_search" type="button" class="btn btn-primary" 
+							style="margin-bottom: 10px;">搜索</button>
+							&nbsp;<button id="btn_search" type="button" onclick="exportMerchantRemain()" class="btn btn-danger"
+							style="margin-bottom: 10px;">导出</button></div>
+
+					</form>
+				</div>
+				<div class="row-fluid widget">
+					<table id="table"></table>
+				<div align="center" id = "mYimg">
+				<img alt="" src="./ui/123.gif" height="100" width="100" style="" >
+				</div>	
+ 
+				</div>
+
+			</div>
+
+
+		</div>
+		
+	</div>
+
+
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/jssrc/jquery.1.9.1.min.js?20160808-2"></script>
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/bootstrap-v232/js/bootstrap.js?20160808-2"></script>
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/jssrc/Validform_v5.3.2.js?20160808-2"></script>
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/jssrc/jquery.query-object.js?20160808-2"></script>
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/jssrc/highcharts/highcharts.js?20160808-2"></script>
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/jssrc/highcharts/highcharts-3d.js?20160808-2"></script>
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/jssrc/highcharts/modules/exporting.js?20160808-2"></script>
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/js/datepicker/WdatePicker.js?20160808-2"></script>
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/bootstrap/js/matrix.js?20160808-2"></script>
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/lib/bootstrap-notify/js/bootstrap-notify.js?20160808-2"></script>
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/lib/layer/layer.js?20160808-2"></script>
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/js/app.js?20160808-2"></script>
+
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/lib/bootstrap-table/bootstrap-table.js?20160808-2"></script>
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/lib/bootstrap-table/extensions/export/bootstrap-table-export.js?20160808-2"></script>
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/lib/bootstrap-table/locale/bootstrap-table-zh-CN.js?20160808-2"></script>
+
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/lib/bootstrap-editable.js?20160808-2"></script>
+
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/lib/bootstrap-table/extensions/editable/bootstrap-table-editable.js?20160808-2"></script>
+
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/lib/bootstrap-datepicker-1.5/js/bootstrap-datepicker.js?20160808-2"></script>
+	<script type="text/javascript" src="./ui/layui/layui.js"></script>
+
+	<script type="text/javascript"
+		src="http://static.apptest.0085.com/lib/bootstrap-datepicker-1.5/locales/bootstrap-datepicker.zh-CN.min.js?20160808-2"></script>
+
+	<style>
+.row-fluid .span1 {
+	width: 12%;
+}
+</style>
+	<script>
+		layui.use('laydate', function() {
+			var laydate = layui.laydate;
+
+			var start = {
+				min : laydate.now(-600),
+				max : '2099-06-16 23:59:59',
+				istoday : false,
+				choose : function(datas) {
+					end.min = datas; //开始日选好后，重置结束日的最小日期
+					end.start = datas //将结束日的初始值设定为开始日
+				}
+			};
+
+			var end = {
+				min : laydate.now(),
+				max : '2099-06-16 23:59:59',
+				istoday : false,
+				choose : function(datas) {
+					start.max = datas; //结束日选好后，重置开始日的最大日期
+				}
+			};
+
+			document.getElementById('LAY_demorange_s').onclick = function() {
+				start.elem = this;
+				laydate(start);
+			}
+			document.getElementById('LAY_demorange_e').onclick = function() {
+				end.elem = this
+				laydate(end);
+			}
+
+		});
+	</script>
+	<script type="text/javascript">
+		function responseHandler(res) {
+			$("#mYimg").hide();
+			var sum = res['obj'].sum;
+			$("#sum").html(sum);
+			if (res.success) {
+				var count = 0;
+				count = res['pagination']['count'];
+
+				var new_res = {
+					rows : res['obj']['list'],
+					total : count
+				};
+				return new_res;
+			} else {
+				$("#sum").html("0");
+				return {
+					rows : {},
+					total : 0
+				}
+			}
+		}
+
+		function genQueryParam(params) {
+			var p = {};
+
+			var arr = $('#searchForm').serializeArray();
+
+			$.each(arr, function(i, v) {
+				p[v.name] = v.value;
+			})
+
+			var query = jQuery.query.keys;
+
+			p['pageNum'] = params.pageNumber;
+			p['pageSize'] = params.pageSize;
+			p['sort_order'] = params.sortOrder;
+			p['sort_name'] = params.sortName;
+
+			$.extend(p, query);
+
+			delete p['s'];
+			return p;
+		}
+
+		$(function() {
+                 $("#mYimg").show();
+			$('.input-daterange').datepicker({
+				format : "yyyy-mm-dd",
+				todayBtn : "linked",
+				clearBtn : true,
+				language : "zh-CN",
+				autoclose : true,
+				todayHighlight : true
+			});
+
+			$('#btn_search').click(function() {
+				$('#table').bootstrapTable('refresh');
+			})
+
+			$('#table').bootstrapTable({
+				idField : 'id',
+				clickToSelect : false,
+				singleSelect : false,
+				showRefresh : true,
+				showColumns : true,
+				striped : true,
+				clickToSelect : true,
+				showExport : false,
+				showToggle : true,
+				pagination : true,
+				queryParamsType : 'page',
+				sidePagination : "server",
+				paginationFirstText : "首页",
+				paginationPreText : "上一页",
+				paginationNextText : "下一页",
+				paginationLastText : "尾页",
+				pageSize : 10,
+				queryParams : genQueryParam,
+				pageList : [ 8, 15, 25, 50, 100, 150, 200 ],
+				responseHandler : responseHandler,
+				method : "get",
+				url : "/ROOT/withdrawalsController.do?getSumWithdrawals",
+				flat : true,
+				search : false,
+				columns : [
+
+				{
+					title : '申请时间',
+					field : 'submit_time',
+					colspan : 1,
+					sortable : true
+				}, {
+					title : '到账时间',
+					field : 'complete_time',
+					colspan : 1,
+					sortable : true
+				}, {
+					title : '用户ID',
+					field : 'user_id',
+					colspan : 1,
+					sortable : true,
+				}, {
+					title : '提现金额',
+					field : 'money',
+					colspan : 1,
+					sortable : false,
+				}, {
+					title : '合作商/商家名称',
+					field : 'user_type',
+					colspan : 1,
+					sortable : true,
+				}, {
+					title : '登录账号',
+					field : 'withdrawal',
+					colspan : 1,
+					sortable : true,
+				}, {
+					title : '状态',
+					field : 'state',
+					colspan : 1,
+					sortable : true,
+				}
+				]
+			});
+		});
+// 		文件导出
+		function exportMerchantRemain()
+		{
+			var start_time = $("#startTime").val();
+			var end_time = $("#endTime").val();
+		    var url = "/ROOT/withdrawalsController.do?exportSumWithdrawals";
+			window.open(url+"&startTime="+start_time+"&endTime="+end_time,"_self");
+			
+			
+		}
+	</script>
+
+
+</body>
+</html>

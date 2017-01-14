@@ -1,0 +1,15 @@
+
+1.工作合作商外卖收入
+2.每一笔订单提取%2的订单收入给一级合作商
+3.做一个定时任务
+4.开始学习  
+  1.OrderIncomeServiceImpl.java --预收入的开始
+    method createOrderIncome
+ 5./**   
+ * @Title: Entity
+ * @Description: user
+ * @author wuyong
+ * @date 2015-01-07 09:12:24
+ * @version V1.0   
+ *
+ */

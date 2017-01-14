@@ -1,0 +1,66 @@
+1.测试环境 url
+  1. http://localhost:8080/ROOT/static/agent/agentQuota.html
+  2.http://www.layui.com/demo/laypage.html 样式页面  插件 
+  3.总测试页面 
+  http://apptest.0085.com:8081/order/api.php?s=/home/public/login
+     、、招商设置页面  
+  http://php.szjzht.com/order/api.php?s=/home/public/login  新版测试页面 以后这就是正式的页面
+  4.http://localhost:8080/ROOT/static/agent/agentSetting.html	
+  
+  5. http://localhost:8080/ROOT/static/agent/agentAdmin.html .. 合作商管理 
+  6. http://localhost:8080/ROOT/static/agent/editAgent.html  ...合作商管理编辑页面
+  
+ 、、 http://jquery.cuishifeng.cn/jQuery.isEmptyObject.html
+  
+  java date 的加减 
+  http://blog.csdn.net/liwenfeng1022/article/details/6534176/
+  
+ //还有数据库的分页 这是一个很重要的知识点遗漏 
+  com.github.pagehelper.PageHelper
+  
+  YH02011381
+  12345678a
+  \
+  
+  //下面是胖哥的项目 
+  fatBrother
+    1.http://localhost:8080/ROOT/static/generalTablegeneralTable/NewFile.html AgentRemain             合作商留存
+	2.http://localhost:8080/ROOT/static/generalTable/NewFile.html Withdraw          		提现
+	3.http://localhost:8080/ROOT/static/generalTablegeneralTablegeneralTablegeneralTable/NewFile.html MerchantRemain          商家留存
+	4.http://localhost:8080/ROOT/static/generalTablegeneralTablegeneralTable/NewFile.html WithdrawReeject   		提现被驳回
+	5.http://localhost:8080/ROOT/static/generalTablegeneralTable/MerchantorderIncome.html	MerchantorderIncome     商家订单收入
+	2.http://localhost:8080/ROOT/static/generalTable/GeneralTable.html  综合的表那 
+	http://agent.szjzht.com/static/generalTable/GeneralTable.html
+
+	
+对账项目：url
+http://localhost:8088/ROOT/AgentComputationBillController.do?computationBill&stardTime=%222017-10-11%22	
+	http://localhost:8088/ROOT/static/generalTable/FinancialReview.html
+	
+	
+	
+	
+	
+	
+	
+	
+  
+  一号生活模拟--真实环境最新 测试地址，用户测试什么内容。
+  http://php.szjzht.com/order/api.php?s=/home/index/index
+https://www.processon.com/i/5712f5ede4b0302dc78d6dfb
+
+
+http://apptest.0085.com:8081/order/api.php?s=/api/agent/save_agent
+
+
+
+
+
+
+日报----
+
+zhoucong@0085.com
+抄送给下面这2个人. 
+pengyuanyuan@0085.com
+jiangpingmei@dingtalk.com
+
